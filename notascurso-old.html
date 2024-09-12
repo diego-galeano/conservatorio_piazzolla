@@ -1,0 +1,184 @@
+<html>
+	<head>
+			<link rel="stylesheet" type="text/css" href="/js/styles.css" />
+			<link rel="stylesheet" type="text/css" href="/js/jquery-ui.css" />
+			<!--<link rel="stylesheet" type="text/css" href="/metrolab/assets/bootstrap/css/bootstrap.min.css" />-->
+			<link rel="stylesheet" type="text/css" href="/metrolab/assets/bootstrap/css/bootstrap-responsive.min.css" />
+			<link rel="stylesheet" type="text/css" href="/metrolab/assets/bootstrap/css/bootstrap-fileupload.css" />
+			<link rel="stylesheet" type="text/css" href="/metrolab/assets/font-awesome/css/font-awesome.css" />
+			<!--	<link rel="stylesheet" type="text/css" href="/metrolab/css/style.css" /> -->
+			<link rel="stylesheet" type="text/css" href="/metrolab/css/style-responsive.css" />
+			<link rel="stylesheet" type="text/css" href="/metrolab/css/style-default.css" id="style_color"/>
+			<script type="text/javascript" src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+			<script type="text/javascript" src="https://code.jquery.com/ui/1.10.3/jquery-ui.min.js"></script>
+	<script>
+		
+
+$(document).ready(function()
+{
+  $("tr:odd").css({
+    "background-color":"#666",
+    "color":"#fff"});
+});
+
+        function validarRangoNota1(x) {
+            if (x.value < 0 || x.value > 10) {
+                window.alert("DEBE SER ENTRE 0 y 10") ;
+                x.value = 0 ;
+                x.focus() ;
+            } else {
+            }
+        }
+
+        function validarRangoNota2(x,id) {
+            if (x.value < 0 || x.value > 10) {
+                window.alert("DEBE SER ENTRE 0 y 10") ;
+                x.value = 0 ;
+                x.focus() ;
+            } else {
+                if (x.value*1 == 0) {
+                    $('#promedio_' + id).val('');
+                } else {
+                    if ($('#nro_not_1_' + id).val()==0)
+                        {
+                        $('#nro_not_1_' + id).val($('#nro_not_2_' + id).val()) ;
+                        }
+                    $('#promedio_' + id).val(($('#nro_not_1_' + id).val()*1 +  $('#nro_not_2_' + id).val() *1)/2);
+                }
+
+            }
+        }
+
+	</script>
+	</head>
+
+	<body style="font-family:sans-serif; font-size:16;">
+
+	<div style="background-color:#a300f4;" align="center">
+			<table>
+				<tr>
+					<td width="20%">
+						<a href="/cgi-bin/home.pl">
+						<img src="/img/logo_piazzolla.png">
+						</a>
+					</td>
+					<td width="80%" align="center">
+						<p align=center style="color:#FFFFFF;font-family:sans-serif; font-size:22;">
+							<b>ESTUDIANTES DEL CURSO <!--nro--> <!--matdes--> VERSION EN DESARROLLO</b>
+						</p>
+						<p align=center style="color:#FFFFFF;font-family:sans-serif; font-size:14;">
+						</p>
+					</td>
+				</tr>
+			</table>
+		<div style="background-color:#ffffff;" align="center" width="95%">
+		<img src="/img/edificio-500x500.png" width="16%">
+		<img src="/img/64385275_2369695026422333_1231633162627448832_o-500x500.jpg" width="16%">
+		<img src="/img/IMG_2499-500x500.jpg" width="16%">
+		<img src="/img/coro-500x500.jpg" width="16%">
+		<img src="/img/IMG_1432-500x500.jpg" width="16%">
+		<img src="/img/2938180351_f67b0b973a_b-500x500.jpg" width="16%">
+		</div>
+	</div>
+	<p align="center">
+        <form id="elform" action="/cgi-bin/notastp.pl?extra=2" method="POST">
+            <input type="text" value="98201" style="display: none;" class="input-field">
+            <input type="hidden" name="token" value="<!--token-->">
+            <table align="center">
+                <tbody>
+                    <tr>
+                        <td colspan="4">
+                            <strong>Completar los datos (nota de 2do Cuat. y asistencia) de cada alumno y hacer click en CONFIRMAR para que se registren.</strong>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">
+                            <strong>Si deja la nota de 1er Cuat. en blanco, se repetir&aacute; la nota que ingrese en el 2do Cuat. para que sea tomada como promedio final. <br>El promedio se calcula autom&aacute;ticamente.</strong>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="7">
+                            <hr/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th width="20%" align="left">Materia que Cursa</th>
+                        <th width="15%" align="left">Apellido</th>
+                        <th width="15%" align="left">Nombre</th>
+                        <th width="5%" align="left">Nota 1er Cuat.</th>
+                        <th width="5%" align="left">Nota 2do Cuat.</th>
+                        <th width="5%" align="left">Promedio Final</th>
+                        <th width="10%" align="left">Asistencia</th>
+                    </tr>
+                    <!--renglon-->
+                    <tr>
+                        <td>
+                            <!--matdes-->
+                        </td>
+                        <td>
+                            <input type="hidden" name="id" value="<!--id-->">
+                            <!--ape-->
+                        </td>
+                        <td>
+                            <!--nom-->
+                        </td>
+                        <td>
+                            <input type="number" min="0" max="10" name="nro_not_1" id="nro_not_1_<!--id-->" value="<!--nro_not_1-->" onblur="validarRangoNota1(this);">
+                        </td>
+                        <td>
+                            <input type="number" min="0" max="10" name="nro_not_2" id="nro_not_2_<!--id-->" value="<!--nro_not_2-->" onblur="validarRangoNota2(this,'<!--id-->');">
+                        </td>
+                        <td>
+                            <input type="number" min="0" max="10" id="promedio_<!--id-->" disabled value="<!--promedio-->" >
+                        </td>
+                        <td>
+                            <select name="nro_asi">
+                                <option value="0" <!--nodecidio--> >Elija...</option>
+                                <option value="60" <!--asistio--> >Asisti&oacute;</option>
+                                <option value="10" <!--quedolibre--> >Qued&oacute; LIBRE</option>
+                            </select>
+                            <input type="hidden" name="txt_obs" value="<!--txt_obs-->">
+                        </td>
+                    </tr>
+                    <!--finrenglon-->
+                </tbody>
+			</table>
+		    <p align="center">
+			    <input id="Confirmar" type="submit" name="CONFIRMAR" value="CONFIRMAR">
+			    <input id="volver" type="button" value="VOLVER A LA LISTA DE CURSOS" onclick="location.href='/cgi-bin/notastp.pl?extra=2';">
+			    <input id="principal" type="button" value="VOLVER A LA PAGINA PRINCIPAL" onclick="location.href='/cgi-bin/homedocentes.pl?extra=2';">
+			</p>
+		</form>
+	</p>
+
+	</body>
+<script>
+</script>
+</html>
+
+
+<!--renglonnomodificable-->
+<tr>
+    <td>
+        <!--ape-->
+    </td>
+    <td>
+        <!--nom-->
+    </td>
+    <td>
+        <!--matdes-->
+    </td>
+    <td>
+        <!--nro_not_1-->
+    </td>
+    <td>
+        <!--nro_not_2-->
+    </td>
+    <td>
+        <!--promedio-->
+    </td>
+    <td>
+        <!--txt_obs-->
+    </td>
+</tr>
+<!--finrenglonnomodificable-->

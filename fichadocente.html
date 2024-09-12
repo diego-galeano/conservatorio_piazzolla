@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <!-- <base href="/dev/diego/"> -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="preload" href="css/styles-fichadocente.css" as="style">
+    <link href="css/styles-fichadocente.css" rel="stylesheet">
+    <title>Ficha Docente</title>
+    <script>
+        function logout() {
+            document.cookie = 'doc=; Path=/ ; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+            document.cookie = 'pin=; Path=/ ; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+            location.href = "/docentes2.html";
+        }
+    </script>
+</head>
+
+<body>
+    <!-- LOADER -->
+    <div id="spinner">
+        <div></div>
+    </div>
+
+    <!-- HEADER NAV -->
+    <header>
+        <nav class="navbar navbar-dark navbar-expand-lg">
+            <div class="container-fluid">
+                <a href="https://conservatoriopiazzolla.ar/cgi-bin/homedocentes.pl?extra=2">
+                    <img class="logo" src="src/Logo-SIN-LETRAS-conservatorio-Astor-Piazzolla.svg"
+                        alt="Logo del conservatorio">
+                    <img class="logo-xl" src="src/Logo-Conservatorio-Superior-de-Musica-Astor-Piazzolla-Blanco.svg"
+                        alt="Logo del conservatorio">
+                </a>
+                <h1>FICHA DE DATOS PERSONALES DE DOCENTES</h1>
+
+                <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapsibleNavbar" aria-expanded="false">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="collapsibleNavbar">
+
+                    <ul class="navbar-nav">
+                        <li class="navbar-item">
+                            <a class="nav-link" href="/cgi-bin/fichadocente.pl?extra=2">Modificar Datos</a>
+                        </li>
+                        <li class="navbar-item">
+                            <a class="nav-link" href="javascript:logout();">Cerrar Sesión</a>
+                        </li>
+
+                    </ul>
+                </div>
+                <ul class="navbar-nav ms-auto navbar-dropdown d-none d-lg-block">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Cuenta
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="/cgi-bin/fichadocente.pl?extra=2">Modificar Datos
+                                    Personales</a></li>
+                            <li><a class="dropdown-item" href="javascript:logout();">Cerrar Sesión</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+
+        <div class="user-info">
+            <p><!--ape-->, <!--nom--></p>
+            <p><!--tip_doc--> <!--nro_doc--></p>
+        </div>
+
+    </header>
+
+    <main>
+
+        <form id="elform" action="/cgi-bin/fichadocente.pl" method="POST" class="needs-validation" novalidate>
+            <input type="hidden" name="confirmar" value="confirmar">
+            <input type="hidden" name="id" value="<!--id-->">
+            <input type="hidden" name="extra" value="2">
+            <div class="container">
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label for="apellido" class="form-label">Apellidos</label>
+                        <input id="apellido" name="ape" type="text" class="form-control" value="<!--ape-->" required
+                            disabled>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="nombre" class="form-label">Nombres</label>
+                        <input id="nombre" name="nom" type="text" class="form-control" value="<!--nom-->" required
+                            disabled>
+                    </div>
+
+                    <div class="col-md-3">
+                        <label for="tipo" class="form-label">Tipo Documento</label>
+                        <select id="tipo" name="tip_doc" class="form-select" disabled required>
+                            <option value="DNI" <!--es_dni-->>DNI</option>
+                            <option value="PAS" <!--es_pas-->>PASAPORTE</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="dni" class="form-label">Número Documento</label>
+                        <input id="dni" name="nro_doc" type="text" class="form-control" value="<!--nro_doc-->" disabled
+                        required>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <label for="cui" class="form-label">CUIL</label>
+                        <input id="cui" name="cui" type="text" class="form-control" value="<!--cui-->" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="sex" class="form-label">Género</label>
+                        <select id="sex" name="sex" class="form-select" required>
+                            <option value="">Seleccione...</option>
+                            <option <!--es_f--> value="F">Femenino</option>
+                            <option <!--es_m--> value="M">Masculino</option>
+                            <option <!--es_o--> value="O">Otros</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="fec_nac" class="form-label">Fecha de Nacimiento</label>
+                        <input type="date" id="fec_nac" name="fec_nac" class="form-control" required
+                            value="<!--fec_nac-->">
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="nac" class="form-label">Nacionalidad</label>
+                        <input id="nac" name="nac" type="text" class="form-control" value="<!--nac-->" required>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="est_civ" class="form-label">Estado Civil</label>
+                        <select id="est_civ" name="est_civ" class="form-select" required>
+                            <option value="">Seleccione...</option>
+                            <option <!--es_s--> value="S">Soltero</option>
+                            <option <!--es_c--> value="C">Casado</option>
+                            <option <!--es_d--> value="D">Divorciado</option>
+                            <option <!--es_v--> value="V">Viudo</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="fic_mun" class="form-label">Ficha Municipal</label>
+                        <input id="fic_mun" name="fic_mun" type="text" class="form-control" value="<!--fic_mun-->"
+                            required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="pin" class="form-label">PIN (clave hasta 12 caracteres)</label>
+                        <input id="pin" name="pin" type="password" class="form-control" required value="<!--pin-->">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="pin2" class="form-label">Repita el PIN</label>
+                        <input id="pin2" type="password" class="form-control" required value="<!--pin-->">
+                    </div>
+                    
+                    <h4 class="mt-4">Datos de Contacto</h4>
+
+                    <div class="col-md-6">
+                        <label for="email" class="form-label">Email Principal/Personal</label>
+                        <input id="email" name="eml" type="email" class="form-control" required value="<!--eml-->"
+                            onchange="validarmail(email);">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="emailalt" class="form-label">Email Alternativo</label>
+                        <input id="emailalt" name="eml_alt" type="email" class="form-control" required
+                            value="<!--eml_alt-->" onchange="validarmail(emailalt);">
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="emailofi" class="form-label">Email @buenosaires.gob.ar</label>
+                        <input id="emailofi" name="eml_ofi" type="email" class="form-control" required
+                            value="<!--eml_ofi-->" onchange="validarmail(emailofi);">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="emailntf" class="form-label">Email Notificaciones Electrónicas</label>
+                        <input id="emailntf" name="eml_ntf" type="email" class="form-control" required
+                            value="<!--eml_ntf-->" onchange="validarmail(emailntf);">
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="tel" class="form-label">Teléfono Fijo</label>
+                        <input id="tel" name="tel" type="tel" class="form-control" required value="<!--tel-->">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="cel" class="form-label">Teléfono Móvil</label>
+                        <input id="cel" name="cel" type="tel" class="form-control" required value="<!--cel-->">
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="dom" class="form-label">Domicilio</label>
+                        <input id="dom" name="dom" type="text" class="form-control" required value="<!--dom-->">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="loc" class="form-label">Localidad</label>
+                        <input id="loc" name="loc" type="text" class="form-control" required value="<!--loc-->">
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="pvn_id" class="form-label">Provincia</label>
+                        <select id="pvn_id" name="pvn_id" class="form-select">
+                            <!--provincia-->
+                            <option value="<!--id-->" <!--selected--> ><!--des--></option>
+                            <!--finprovincia-->
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="zip" class="form-label">Código Postal</label>
+                        <input id="zip" name="zip" type="text" class="form-control" required value="<!--zip-->">
+                    </div>
+
+                    <h4 class="mt-4">Contacto de Emergencia</h4>
+
+                    <div class="col-md-6">
+                        <label for="tel_emg" class="form-label">Celular</label>
+                        <input id="tel_emg" name="tel_emg" type="tel" class="form-control" value="<!--tel_emg-->"
+                            required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="eml_emg" class="form-label">Email</label>
+                        <input id="eml_emg" name="eml_emg" type="email" class="form-control" value="<!--eml_emg-->"
+                            required onchange="validarmail(eml_emg);">
+                    </div>
+
+
+                    <div class="divisor mt-5"></div>
+                    <h4>Personas a Cargo</h4>
+                    
+                    <div class="col-12 mb-2" id="familiaresContainer">
+                        <!--familiar-->
+                        <div class="row familiar my-3 pb-3">
+                            <div class="col-md-4 mt-3">
+                                <input type="text" name="nom_fam" class="form-control" placeholder="Nombre"
+                                value="<!--nom_fam-->">
+                            </div>
+                            <div class="col-md-4 mt-3">
+                                <input type="text" name="ape_fam" class="form-control" placeholder="Apellido"
+                                value="<!--ape_fam-->">
+                            </div>
+                            <div class="col-md-4 mt-3">
+                                <select name="ptc_fam" class="form-select">
+                                    <option value=""></option>
+                                    <!--losparentescos-->
+                                </select>
+                            </div>
+                            <div class="col-md-4 mt-3">
+                                <select name="tip_doc_fam" class="form-select">
+                                    <option value="">Tipo Doc.</option>
+                                    <option value="DNI" <!--es_dni_fam-->>DNI</option>
+                                    <option value="PAS" <!--es_pas_fam-->>Pasaporte</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4 mt-3">
+                                <input type="text" name="doc_fam" class="form-control" placeholder="Nro. Doc."
+                                value="<!--doc_fam-->">
+                            </div>
+                            <div class="col-md-4 mt-3">
+                                <input type="date" name="fec_nac_fam" class="form-control" value="<!--fec_nac_fam-->">
+                            </div>
+                        </div>
+                        <!--finfamiliar-->
+                        <div class="row renglonfamiliar familiar my-3 pb-3">
+                            <div class="col-md-4 mt-3">
+                                <input type="text" name="nom_fam" class="form-control" placeholder="Nombre"
+                                value="">
+                            </div>
+                            <div class="col-md-4 mt-3">
+                                <input type="text" name="ape_fam" class="form-control" placeholder="Apellido"
+                                value="">
+                            </div>
+                            <div class="col-md-4 mt-3">
+                                <select name="ptc_fam" class="form-select">
+                                    <option value="">Parentesco</option>
+                                    <!--losparentescos-->
+                                </select>
+                            </div>
+                            <div class="col-md-4 mt-3">
+                                <select name="tip_doc_fam" class="form-select">
+                                    <option value="">Tipo Doc.</option>
+                                    <option value="DNI">DNI</option>
+                                    <option value="PAS">Pasaporte</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4 mt-3">
+                                <input type="text" name="doc_fam" class="form-control" placeholder="Nro. Doc."
+                                value="">
+                            </div>
+                            <div class="col-md-4 mt-3">
+                                <input type="date" name="fec_nac_fam" class="form-control" placeholder="Fecha de Nac." value="">
+                            </div>
+                        </div>
+                        
+                        <div class="col-12 d-flex justify-content-end mt-5">
+                            <button type="button" class="btn btn-secondary col-4" id="Agregar"
+                                onclick="agregarFamiliar();" name="Agregar" value="Agregar">AGREGAR</button>
+                        </div>
+                    </div>
+                    <div class="divisor mt-5"></div>
+                    <div class="col-12 text-center my-5">
+                        <div class="row d-flex justify-content-around">
+                            <button id="enviar" type="submit" class="col-4">CONFIRMAR DATOS</button>
+                            <button id="cancelar" type="button" class="btn btn-secondary col-4"
+                            onclick="location.href='/cgi-bin/homedocentes.pl?extra=2';">VOLVER A LA PAGINA PRINCIPAL</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+    </main>
+
+    <!---------------- FOOTTER -------->
+    <footer>
+        <section class="footer_container container">
+            <div class="footer_nav">
+                <h2>Más espacios del Piazzolla</h2>
+                <nav>
+                    <a href="https://cmbsas-caba.infd.edu.ar/">Sitio Web Institucional</a><br>
+                    <a href="https://cmbsas-caba.infd.edu.ar/aula">Campus Virtual</a><br>
+                    <a
+                        href="https://buenosaires.gob.ar/cultura/ensenanza-artistica/conservatorio-superior-de-musica-astor-piazzolla">Buenos
+                        Aires Ciudad</a>
+                </nav>
+            </div>
+            <div class="footer_nav">
+                <h2>Contacto</h2>
+                <nav>
+                    <a href="/reportar_problema_docente.html" target="_blank">Reportar un problema</a><br>
+                    <a href="https://cmbsas-caba.infd.edu.ar/sitio/contacto/" target="_blank">Medios de contacto</a>
+                </nav>
+            </div>
+            <div class="footer_nav">
+                <h2>Redes</h2>
+                <nav>
+                    <a href="https://www.instagram.com/conserpiazzolla/">Instagram</a><br>
+                    <a href="https://www.facebook.com/conservatorioastorpiazzolla/">Facebook</a><br>
+                    <a href="https://twitter.com/conserpiazzolla">Twitter</a><br>
+                    <a
+                        href="https://www.youtube.com/channel/UCn5uu8oG0GhGQ2-RdcCkeeA/playlists?view_as=subscriber">YouTube</a>
+                </nav>
+            </div>
+        </section>
+    </footer>
+
+    <!-- Scrips -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/fichadocente.js">
+    </script>
+</body>
+
+</html>
+
+<!--parentesco-->
+<option value=<!--id--> <!--selected-->><!--des--></option>
+<!--finparentesco-->

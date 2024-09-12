@@ -1,0 +1,299 @@
+<!doctype html>
+<html class="no-js" lang="es">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<base href="/">
+	<title>Acceso Alumnos - Conservatorio Superior de Música Astor Piazzolla</title>
+	<meta name="description" content="">
+
+	<link rel="icon" href="favicon.svg" type="image/svg+xml">
+
+	<link rel="stylesheet" href="bootstrap-5.3.2/dist/css/bootstrap.css">
+	<link rel="stylesheet" href="bootstrap-icons-1.11.2/font/bootstrap-icons.min.css">
+	<link rel="stylesheet" href="css/main.css">
+
+	<meta name="theme-color" content="#a16ae8">
+	<script>
+			function logout()
+			{
+			document.cookie = 'doc=; Path=/ ; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+			document.cookie = 'pin=; Path=/ ; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+			location.href = "/index.html" ;
+			}
+	</script>
+</head>
+<body>
+
+	<nav class="main-navbar navbar navbar-expand-lg sticky-top" data-bs-theme="dark">
+	  <div class="container-fluid">
+	    <a class="navbar-brand" href="/cgi-bin/home.pl?extra=doc">
+	      <img src="content/Logo-Conservatorio-Superior-de-Musica-Astor-Piazzolla-Blanco.svg" class="piazzolla-logo" alt="Conservatorio Superior de Música Astor Piazzolla" width="128" height="50">
+	      <span class="divisor"></span>
+	      <img src="content/Acceso-Estudiantes.svg" class="system-logo" alt="Acceso Estudiantes" width="128" height="34">
+	    </a>
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse justify-content-md-end" id="navbarNavDropdown">
+			<ul class="navbar-nav">
+			    <!--li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+					Extensión
+					</a>
+					<ul class="dropdown-menu dropdown-menu-md-end">
+						<li><a class="dropdown-item" href="#">Actividades disponibles</a></li>
+						<li><a class="dropdown-item" href="#">Tus inscripciones</a></li>
+					</ul>
+		        </li-->
+		    </ul>
+			<ul class="navbar-nav">
+			    <li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" aria-current="page">
+					Cuenta
+					</a>
+					<ul class="dropdown-menu dropdown-menu-md-end">
+						<li><a class="dropdown-item" href="/cgi-bin/registracion.pl">Datos personales</a></li>
+						<li><a class="dropdown-item" href="/cgi-bin/documentacion.pl" aria-current="page">Documentación personal</a></li>
+						<li><hr class="dropdown-divider"></li>
+						<li><a class="dropdown-item text-danger" href="javascript:logout();">Cerrar sesión</a></li>
+					</ul>
+		        </li>
+		    </ul>
+		</div>
+	  </div>
+	</nav>
+
+	<div class="user-info">
+		<div class="container-fluid">
+			<!--ape-->, <!--nom--> <!--tip_doc--> <!--doc-->   |   <!--fecha-->
+		</div>
+	</div>
+	
+	<div class="container-header">
+		<div class="container mb-5 pt-5">
+			<div class="row">
+				<div class="col-md-9">
+					<nav aria-label="breadcrumb">
+						<ol class="breadcrumb">
+							<li class="breadcrumb-item active" aria-current="page">Cuenta</li>
+						</ol>
+					</nav>
+					<h1>Documentación personal</h1>
+					<p class="fs-5">
+						Este formulario está preparado para recibir documentos escaneados/fotografiados correspondientes a la <strong>Inscripción a Carreras</strong>.
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container container-sup-header">
+		<div class="row">
+			<div class="col-md-9">
+				<div class="card">
+					<div class="card-body fs-5">
+						Te vas a inscribir a: <strong><!--nivel--></strong>
+					</div>
+				</div>
+				<div class="alert alert-primary mt-3" role="alert">
+					<small>
+						Los requisitos generales para la inscripción de cada nivel se detallan <a href="https://cmbsas-caba.infd.edu.ar/sitio/ingresantes/" target="_blank">aquí</a><br>
+						<hr>
+						Si necesitas un instructivo más detallado sobre este formulario podés encontrarlo <a href="content/Instructivo-Carga-de-Documentacion.pdf" target="_blank">aquí</a>
+					</small>
+				</div>
+				<div class="accordion" id="infoTecnica">
+					<div class="accordion-item">
+						<h2 class="accordion-header">
+							<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+							Aspectos técnicos a tener en cuenta para realizar la carga
+							</button>
+						</h2>
+						<div id="collapseOne" class="accordion-collapse collapse hide" data-bs-parent="#infoTecnica">
+							<div class="accordion-body">
+								<h5>Documentación digitalizada</h5>
+								<p>
+									La documentación que debe ser "digitalizada" para poder ser cargada en este formulario en forma de archivo, esto quiere decir que deberás contar con los documentos escaneados o fotografiados. Los formatos de archivo permitidos son PDF o Imagen (JPG, JPEG, HEIC, PNG, etc).
+								</p>
+								<h5>Requisito de legibilidad</h5>
+								<p>
+									Toda la documentacion cargada debe ser legible, o sea, debe poder leerse sin problemas.
+								</p>
+								<h5>Peso</h5>
+								<p>
+									Los archivos cargados deben pesar menos de 3mb, si tenes un archivo que pesa más deberás realizarles una compresión detallada en el siguiente instructivo:
+								</p>
+								<ul>
+									<li><a href="https://youtu.be/Qw7lFnWjh98" target="_blank">Instructivo para comprimir archivos PDF desde Computadora</a></li>
+									<li><a href="https://youtube.com/shorts/oyoeEmvPnjM?si=iMCjxPhVA7Y5v-jn" target="_blank">Instructivo para comprimir archivos PDF desde Celular</a></li>
+								</ul>
+								<h5>Cantidad</h5>
+								<p>
+									No se pueden cargar más de 3 archivos por campo.
+								</p>
+								<hr/>
+								<p>
+									<i class="bi bi-exclamation-triangle-fill text-warning"></i> <strong>Importante:</strong> una vez enviada esta documentación solo podrá editarse o volver a cargarse con autorización de personal de administración del conservatorio.
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<form id="main-form" action="/cgi-bin/documentacion.pl" method="POST" enctype="multipart/form-data">
+	
+	<hr>
+	<div class="container pt-3 pb-4">
+		<div class="row">
+			<div class="col-md-9">
+				<input type="hidden" name="id" value="<!--id-->">
+				<h4 class="mb-4">1. DNI / Pasaporte (frente y dorso) <span class="text-danger">*</span></h4>
+				<input class="form-control" type="file" id="input-dni-pasaporte" name="dnipasaporte" multiple required>
+				<div class="invalid-feedback">
+					Alguno de los archivos PDF seleccionados superan el límite de peso indicado de 3mb, es necesario que realices la compresión detallada en nuestros instructivos antes de cargarlos.
+			    </div>
+			</div>
+		</div>
+	</div>
+
+	<hr>
+	<div class="container pt-3 pb-4">
+		<div class="row">
+			<div class="col-md-9">
+				<h4 class="mb-4">2. Partida de Nacimiento <span class="text-danger">*</span></h4>
+				<input class="form-control" type="file" id="input-partida" name="partida" required>
+				<div class="invalid-feedback">
+					Alguno de los archivos PDF seleccionados superan el límite de peso indicado de 3mb, es necesario que realices la compresión detallada en nuestros instructivos antes de cargarlos.
+			    </div>
+			</div>
+		</div>
+	</div>
+
+	<hr>
+	<div class="container pt-3 pb-4">
+		<div class="row">
+			<div class="col-md-9">
+				<h4 class="mb-2">3. Autorización para la publicación de imágenes de alumnos <span class="text-danger">*</span></h4>
+				<p>Descargar la autorización de <a href="https://cmbsas-caba.infd.edu.ar/sitio/wp-content/uploads/2020/02/PIAZZOLLA-AUTORIZACION-MENORES.pdf" target="_blank">menor</a> o <a href="https://cmbsas-caba.infd.edu.ar/sitio/wp-content/uploads/2021/08/Autorizacion-estudiantes-docentes-mayores.pdf" target="_blank">mayor</a> de edad según corresponda, completarla y digitalizala.</p>
+				<input class="form-control" type="file" id="input-autorizacion" name="imagenes" required>
+				<div class="invalid-feedback">
+					Alguno de los archivos PDF seleccionados superan el límite de peso indicado de 3mb, es necesario que realices la compresión detallada en nuestros instructivos antes de cargarlos.
+			    </div>
+			</div>
+		</div>
+	</div>
+
+	<div style="display:<!--displaypadre-->">
+		<hr>
+		<div class="container pt-3 pb-4">
+			<div class="row">
+				<div class="col-md-9">
+					<h4 class="mb-4"><!--nropadre-->. DNI / Pasaporte (frente y dorso) del padre/madre o tutor legal <em>(solo en caso de menores de edad) <span class="text-danger">*</span></em></h4>
+					<input class="form-control" type="file" id="input-dni-pasaporte-tutor" name="dnipasaportepadre" multiple <!--requiredpadre-->>
+					<div class="invalid-feedback">
+						Alguno de los archivos PDF seleccionados superan el límite de peso indicado de 3mb, es necesario que realices la compresión detallada en nuestros instructivos antes de cargarlos.
+				    </div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div style="display:<!--displaytitulo-->">
+		<hr>
+		<div class="container pt-3 pb-4">
+			<div class="row">
+				<div class="col-md-9">
+					<h4 class="mb-2"><!--nrotitulo-->. Educación Secundaria <span class="text-danger"><!--asteriscotitulo--></span></h4>
+					<p><em>Título secundario</em>, <em>Certificado de título en trámite</em> o <em>certificado de alumno regular</em>, según corresponda.<br>
+					<i class="bi bi-info-circle"></i> No es obligatoria la carga de esta documentación en este formulario, si no cuentas con ella en este momento vas a poder enviarla por email con posterioridad a la finalización del período de inscripciones.</p>
+					<p class="small">Los títulos de países extranjeros deberán estar convalidados, conocé acerca del trámite de convalidación en el siguiente <a href="https://www.argentina.gob.ar/educacion/tramites/convalidar-titulo-secundario-de-paises-con-convenio" target="_blank">link</a></p>
+					<input class="form-control" type="file" id="input-titulo" multiple name="titulo" <!--requiredtitulo-->>
+					<div class="invalid-feedback">
+						Alguno de los archivos PDF seleccionados superan el límite de peso indicado de 3mb, es necesario que realices la compresión detallada en nuestros instructivos antes de cargarlos.
+				   </div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div style="display:<!--displaytitulogrado-->">
+		<hr>
+		<div class="container pt-3 pb-4">
+			<div class="row">
+				<div class="col-md-9">
+					<h4 class="mb-2"><!--nrotitulogrado-->. Título de Grado <span class="text-danger">*</span></h4>
+					<p class="small">Los títulos de países extranjeros deberán estar convalidados, conocé acerca del trámite de convalidación en el siguiente <a href="https://www.argentina.gob.ar/educacion/tramites/convalidar-titulo-secundario-de-paises-con-convenio" target="_blank">link</a></p>
+					<input class="form-control" type="file" id="input-titulo-grado" multiple name="titulogrado" <!--requiredtitulogrado-->>
+					<div class="invalid-feedback">
+						Alguno de los archivos PDF seleccionados superan el límite de peso indicado de 3mb, es necesario que realices la compresión detallada en nuestros instructivos antes de cargarlos.
+				   </div>
+				</div>
+			</div>
+		</div>
+	</div>
+		
+	<hr>
+	<div class="container pt-3 pb-4">
+		<div class="row">
+			<div class="d-grid gap-2 col-md-3 mb-2">
+				<input type="submit" class="btn btn-secondary" id="submit-btn" name="confirmar" value="Enviar" disabled>
+			</div>
+			<p class="text-danger mb-5" id="legend-submit">Debes cargar toda la documentación obligatoria para continuar</p>
+		</div>
+	</div>
+
+	</form>
+
+	<footer class="main-footer">
+		<div class="container pt-5 pb-4">
+			<div class="row">
+				<div class="col-md-6">
+					<h6>Más espacios del Piazzolla</h6>
+					<ul class="list-inline">
+						<li class="list-inline-item">
+							<a href="https://cmbsas-caba.infd.edu.ar/">Sitio INFoD</a>
+						</li>
+						<li class="list-inline-item">
+							<a href="https://buenosaires.gob.ar/cultura/ensenanza-artistica/conservatorio-superior-de-musica-astor-piazzolla">Sitio Buenos Aires Ciudad</a>
+						</li>
+						<li class="list-inline-item">
+							<a href="https://cmbsas-caba.infd.edu.ar/aula">Campus Virtual</a>
+						</li>
+					</ul>
+
+					<h6>Redes</h6>
+					<ul class="list-inline">
+						<li class="list-inline-item">
+							<a href="https://www.instagram.com/conserpiazzolla/">Instagram</a>
+						</li>
+						<li class="list-inline-item">
+							<a href="https://www.facebook.com/conservatorioastorpiazzolla/">Facebook</a>
+						</li>
+						<li class="list-inline-item">
+							<a href="https://twitter.com/conserpiazzolla">Twitter</a>
+						</li>
+						<li class="list-inline-item">
+							<a href="https://www.youtube.com/channel/UCn5uu8oG0GhGQ2-RdcCkeeA/playlists?view_as=subscriber">YouTube</a>
+						</li>
+					</ul>
+				</div>
+				<div class="col-md-6">
+					<ul class="list-inline">
+						<li class="list-item">
+							<a href="/cgi-bin/contacto.pl?cual=reportar-problema" target="_blank"><i class="bi bi-exclamation-triangle-fill text-warning"></i> Reportar un problema</a>
+						</li>
+						<li class="list-item">
+							<a href="https://cmbsas-caba.infd.edu.ar/sitio/contacto/" target="_blank">Contacto</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+	<script src="jquery-3.7.1/jquery-3.7.1.min.js"></script>
+    <script src="bootstrap-5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/registro-documentacion-personal-carreras.js"></script>
+</body>
+
+</html>

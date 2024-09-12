@@ -1,0 +1,487 @@
+:root {
+    --principal: rgba(132, 98, 175, 1);
+    --secondary: rgba(161, 106, 232, 1);
+    --light: rgb(249, 249, 249);
+    --dark: rgb(85, 85, 85);
+    --gray: rgb(115, 115, 115);
+    --light-gray: rgb(155, 155, 155);
+    --blue-gray: rgb(233, 236, 239);
+}
+
+  
+/* ========== RESET AND BASE STYLES ========== */
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%; /* 1rem = 10px */
+    -webkit-touch-callout: none;
+    
+}
+
+p {
+    -webkit-touch-callout: default;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+body {
+    font-family: "Roboto", sans-serif;
+    font-size: 1.6rem; /* 16px */
+    background-color: var(--blue-gray);
+    padding-top: 18rem;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+/* Remove arrows in number inputs for various browsers */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input {
+    border-radius: 5px;
+    border: solid var(--blue-gray);
+}
+input:focus {
+    border-color: var(--principal); /* Change border color on focus */
+    outline: none; /* Remove the default outline */
+}
+
+
+/* ========= LOADER SPINNER ======== */
+
+#spinner {
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    background-color: #0f0028;
+    position: fixed; /* Use fixed positioning */
+    top: 0;
+    left: 0;
+    display: flex; /* Use flexbox for centering the spinner */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    z-index: 9999;
+}
+#spinner>div {
+    height: 10rem;
+    width: 10rem;
+    border: 1.5rem solid var(--secondary);
+    border-top-color: var(--dark);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    border-radius: 50%;
+    animation: spin 1.5s infinite linear;
+}
+@keyframes spin {
+    100%{
+        transform: rotate(360deg);
+    }
+}
+
+
+/* ========== HEADER ========== */
+
+header {
+    background-color: var(--secondary);
+    position:fixed;
+    top: 0;
+    width: 100vw;
+    z-index: 1;
+}
+.logo {
+    max-width: 2rem;
+}
+
+h1 {
+    color: var(--light);
+    font-size: 1.2rem;
+    font-weight: 600;
+    font-style: normal;
+    text-align: center;
+    text-wrap: balance !important;
+    letter-spacing: 0.1rem;
+    padding: 1rem 0;
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translateX(-45%);
+    margin: 0;
+    z-index: 2;
+    white-space: nowrap; 
+}
+@media(min-width: 600px) {
+    h1 {
+        font-size: 1.3rem;
+    }
+}
+@media( min-width: 768px) {
+    .navbar .container-fluid {
+        position: relative;
+      }
+}
+
+.horario {
+    font-size: 1rem;
+    padding: 1rem;
+}
+header .user-info {
+    background-color: var(--principal);
+}
+header .user-info{
+    display: flex;
+    justify-items: center;
+    justify-content: space-between;
+    color: var(--light);
+    padding: 0.8rem;
+}
+.user-info p {
+    font-size: 1rem;
+    font-weight: 500;
+    margin: 0 1rem;
+    min-height: 2rem;
+}
+@media (min-width: 500px) {
+    header .user-info {
+        justify-content: flex-end;
+        gap: 2rem;
+    }
+    
+}
+@media (min-width: 600px) {
+    .user-info p {
+        font-size: 1.2rem;
+    }
+}
+
+/* =========== LOGO ========== */
+
+.logo {
+    min-width: 8rem;
+    padding: 1rem;
+}
+.logo-xl {
+    min-width: 20rem;
+    height: auto;
+    padding: 1.5rem;
+    display: none;
+}
+
+@media(min-width: 900px) {
+    .logo {
+        display: none;
+    }
+    .logo-xl {
+        display: block;
+    }
+}
+
+/* ========== NAV BAR =========*/
+
+.custom-toggler .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=UTF8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgb(249, 249, 249)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+    width: 2.5rem;
+}
+  .custom-toggler.navbar-toggler {
+    border-color: var(--light-gray); /* Change border color */
+    margin: 1rem;
+    width: 4rem;
+    height: 3rem;
+  }
+.navbar-dropdown {
+    font-size: 2.1rem;
+}
+.navbar-item .nav-link {
+    color: var(--blue-gray)
+}
+.dropdown-item {
+    font-size: 1.8rem;
+    color: var(--principal);
+}
+.dropdown-menu .dropdown-item:hover  {
+    color: var(--secondary);
+}
+.navbar-dropdown .dropdown-menu-left {
+    right: 0;
+    left: auto;
+}
+
+
+  @media (min-width: 768px) {
+    .navbar-collapse {
+      display: none !important; /* Hide navbar collapse on larger screens */
+    }
+    .navbar-dropdown {
+      display: block !important; /* Show dropdown menu on larger screens */
+    }
+  }
+
+
+@media (max-width: 767.98px) {
+    .dropdown-menu {
+      display: none; /* Hide dropdown menu on smaller screens */
+    }
+  }
+@media (min-width: 768px) {
+    header .user-info>div {
+      padding-right: 3rem;
+    }
+    .navbar-toggler {
+        display: none !important;
+    }
+    .navbar-collapse ul {
+        display: none !important; /* Hide navbar collapse on larger screens */
+
+      }
+
+      .navbar-dropdown {
+        display: block !important; /* Show dropdown menu on larger screens */
+        margin-right: 4rem;
+      }
+    .user-info p {
+        font-size: 1.5rem;
+    }
+    
+    
+}
+
+@media (min-width: 1200px) {
+    header nav {
+        padding-left: 1.5rem;
+    }
+}
+/* ========== MAIN ========== */
+
+main {
+    background-color: var(--light);
+    border-radius: 0.8rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.19);
+    margin: 0 auto;
+    max-width: 36rem;
+    min-height: 38rem;
+    padding: 1rem;
+    }
+    input {
+        font-weight: 400;
+        font-size: 1.2rem;
+        color: var(--dark);
+        padding: 0.5rem 0 0 0.3rem;
+        min-width: 6.5rem ;
+    }
+
+    .estudiante-info {
+        display: flex;
+        gap: 0.2rem;
+
+    }
+    .estudiante-info .input-field {
+        width: 100%;
+    }
+    .estudiante-info p {
+ 
+        background-color: white;
+        min-height: 3rem;
+        max-width: 100%;
+        font-size: 1.5rem;
+        color: var(--gray);
+        padding: 0.2rem 0.2rem 0;
+        margin: 0;
+        border-radius: 5px;
+        border: solid var(--blue-gray);
+        overflow: hidden;
+    }
+    .notas-info {
+        display: flex;
+    } 
+
+    .inputs-notas {
+        display: flex;
+        width: 60%;
+        gap: 0.2rem;
+    }
+    
+    .input-container {
+    position: relative;
+    flex: 1;
+    margin: 0.5rem 0;
+    
+}
+
+
+.input-label {
+    position: absolute;
+    top: -8px;
+    left: 8px;
+    color: var(--principal);
+    background-color: white;
+    font-weight: 400;
+    font-size: 1.2rem;
+    border-radius: 10px;
+    pointer-events: none;
+}
+.asistencia {
+    width: 40%;
+    padding: 0.5rem;
+}
+.select-asistencia {
+    width: 12rem;
+    border-radius: 5px;
+    border-color: var(--blue-gray);
+    color: var(--gray);
+    font-size: 1.3rem;
+    appearance: none; /* Remove the default dropdown arrow in some browsers */
+    -webkit-appearance: none; /* Remove the default dropdown arrow in Webkit browsers */
+    -moz-appearance: none; /* Remove the default dropdown arrow in Firefox */
+    cursor: pointer; /* Pointer cursor on hover */
+}
+.select-asistencia:focus {
+    border-color: var(--principal);
+    outline: var(--blue-gray);
+}
+
+
+
+@media (min-width: 768px) {
+    main {
+        min-width: 100%;
+        padding: 1rem;
+    }
+    .inputs-line {
+        display: flex;
+    }
+    .estudiante-info {
+        width: 60%;
+    }
+    .horario {
+        font-size: 1.2rem;
+    }
+}
+@media (min-width: 992px) {
+    h1 {
+        font-size: 1.6rem;
+        top: 1rem;
+    }
+    main {
+     min-width: 85rem;
+     padding: 2rem;
+    } 
+
+  }
+@media (min-width: 1024px) {
+
+ }
+.img-box {
+    border-radius: 0.8rem 0.8rem 0 0;
+}
+
+
+h2 {
+    color: var(--dark);
+    padding-bottom: 1rem;
+    text-align: center;
+}
+.dropdown-toggle {
+    width: 100%;
+}
+
+.list-group-item {
+    color: var(--gray);
+}
+.list-group-item > span {
+    color: var(--principal);
+}
+
+
+
+/* ========== Buttons ========== */
+
+.buttons-container {
+    padding-top: 3rem;
+    min-height: 30vh;
+    display: flex;
+    flex-direction: column;
+    margin: 1rem 0;
+    align-items: center;
+}
+.two-rows {
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+  
+.two-rows button {
+    flex: 1 1 calc(50% - 10px); /* 50% width minus a small gap */
+    margin: 5px; /* Small margin for spacing */
+}
+@media (min-width: 768px) {
+    .buttons-container {
+     padding: 0 2rem;
+    } 
+ }
+.divisor {
+    background-color: var(--gray);
+    margin: 0.5rem 0;
+    height: 0.2rem;
+    border-radius: 25rem;
+}
+button {
+    width: 100%;
+    background-color: var(--bs-list-group-bg);
+    border-radius: 0.6rem;
+    color: var(--principal);
+    border: 2px solid var(--principal);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    font-weight: bold;
+    padding: 0.4rem;    
+    margin: 1.3rem 0.5rem;
+}
+
+
+/* ========== FOOTER ========== */
+
+footer {
+    background-color: var(--light);
+    margin: 3rem 0 5rem 0;
+}
+
+.footer_container {
+    max-width: 36rem;
+    margin: auto;
+    padding: 2.5rem 0;
+}
+@media (min-width: 768px) {
+    .footer_container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 1rem;
+        min-width: 80rem;
+        padding-inline: 3rem;
+    }
+}
+@media (min-width: 992px) {
+    .footer_container {
+        display: flex;
+        justify-content: space-between;
+    }
+    footer {
+        position: relative;
+        top: 12rem;
+    }
+}
+
+
+.footer_nav {
+    padding: 1rem;
+}
+
+.footer_nav nav a{
+    color: var(--secondary);
+}
